@@ -4,4 +4,5 @@ export const BELIEVE_EYES = {
   buttonText: 'Get a demo',
   buttonHref: '#demo',
   image: '/images/believe-eyes/bg.jpg',
+  imageAlt: 'Man in a cap smiling at his phone',
 }

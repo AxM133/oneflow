@@ -9,7 +9,7 @@ const base = {
 }
 
 /** Маятник Ньютона — «Forget friction» */
-function FrictionIcon({ className }) {
+export function FrictionIcon({ className }) {
   return (
     <svg {...base} className={className}>
       <path d="M4 4h16" />
@@ -22,7 +22,7 @@ function FrictionIcon({ className }) {
 }
 
 /** Шляпа фокусника — «Unleash data» */
-function DataIcon({ className }) {
+export function DataIcon({ className }) {
   return (
     <svg {...base} className={className}>
       <path d="M7 11l1-6h8l1 6" />
@@ -34,7 +34,7 @@ function DataIcon({ className }) {
 }
 
 /** Волшебная палочка — «Take control» */
-function ControlIcon({ className }) {
+export function ControlIcon({ className }) {
   return (
     <svg {...base} className={className}>
       <path d="M5 19l9-9" />
@@ -43,10 +43,4 @@ function ControlIcon({ className }) {
       <path d="M18 15v2M17 16h2" />
     </svg>
   )
-}
-
-export const FEATURE_ICONS = {
-  friction: FrictionIcon,
-  data: DataIcon,
-  control: ControlIcon,
 }

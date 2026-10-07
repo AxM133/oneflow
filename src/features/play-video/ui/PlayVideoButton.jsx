@@ -31,7 +31,7 @@ export function PlayVideoButton({ videoId, label = 'Play video', className }) {
         <PlayIcon className="size-4" />
       </button>
 
-      <Modal open={isOpen} onClose={() => setIsOpen(false)} label={label}>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)} label={label} size="lg">
         <div className="aspect-video w-full overflow-hidden rounded-xl bg-black">
           {/* iframe создаём только пока модалка открыта — при закрытии видео останавливается */}
           {isOpen && (

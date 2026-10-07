@@ -3,7 +3,13 @@ import { ButtonLink } from '@/shared/ui/button'
 import { Heading } from '@/shared/ui/heading'
 import { Text } from '@/shared/ui/text'
 
-import { FEATURE_ICONS } from './FeatureIcons'
+import { ControlIcon, DataIcon, FrictionIcon } from './FeatureIcons'
+
+const FEATURE_ICONS = {
+  friction: FrictionIcon,
+  data: DataIcon,
+  control: ControlIcon,
+}
 
 // Зигзаг только на lg+, на мобилке и планшете — одна колонка
 const ALIGN_CLASSES = {

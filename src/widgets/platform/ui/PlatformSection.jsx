@@ -20,13 +20,8 @@ export function PlatformSection() {
         className="pointer-events-none absolute top-0 left-[8%] hidden h-full w-[40%] rotate-[-12deg] rounded-full bg-linear-to-b from-orange-300/70 via-pink-300/60 to-sky-300/70 blur-3xl lg:block"
       />
 
-      {/* Декор: рука снизу слева */}
-      <img
-        src="/images/platform/hand.png"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 hidden w-48 lg:block xl:w-64"
-      />
+      {/* TODO(Dev 2): рука снизу слева — файл /images/platform/hand.png не попал в коммит.
+          Добавь картинку в public/images/platform/ и верни <img> */}
 
       <Heading as="h2" size="lg" className="relative mx-auto max-w-2xl text-center">
         {PLATFORM_TITLE}

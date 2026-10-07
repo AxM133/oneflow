@@ -12,7 +12,7 @@ export function BelieveEyesSection() {
       tone="dark"
       spacing="none"
       className="relative overflow-hidden"
-      containerClassName="relative flex min-h-[520px] items-center py-16 sm:min-h-[560px] lg:min-h-[640px]"
+      containerClassName="flex min-h-[520px] items-center py-16 sm:min-h-[560px] lg:min-h-[640px]"
     >
       <img
         src={BELIEVE_EYES.image}
@@ -25,6 +25,7 @@ export function BelieveEyesSection() {
         className="absolute inset-0 bg-linear-to-t from-ink-900/90 via-ink-900/50 to-ink-900/20 lg:bg-linear-to-r lg:from-ink-900/80 lg:via-ink-900/30 lg:to-transparent"
       />
 
+      {/* Фото и затемнение позиционируются от секции (на всю ширину), текст — поверх них */}
       <div className="relative max-w-md">
         <Heading as="h2" size="xl" className="text-blush-100">
           {BELIEVE_EYES.title}
