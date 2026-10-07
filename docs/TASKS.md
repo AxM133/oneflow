@@ -5,8 +5,8 @@
 | #   | Секция на макете                            | Слайс                       | Кто      |
 | --- | ------------------------------------------- | --------------------------- | -------- |
 | —   | Шапка                                       | `widgets/header`            | Dev 1 ✅ |
-| 1   | Work wonders                                | `widgets/hero`              | Dev 1    |
-| 2   | Join these companies making business flow   | `widgets/clients`           | Dev 1    |
+| 1   | Work wonders                                | `widgets/hero`              | Dev 1 ✅ |
+| 2   | Join these companies making business flow   | `widgets/clients`           | Dev 1 ✅ |
 | 3   | Turn signatures into smart contracts + табы | `widgets/smart-contracts`   | Dev 2    |
 | 4   | Press play                                  | `widgets/press-play`        | Dev 2    |
 | 5   | The complete platform for smart contracts   | `widgets/platform`          | Dev 2    |
@@ -34,21 +34,21 @@
 - [x] `shared/ui`: Button, ButtonLink, Container, Section, Heading, Text, Badge, Logo, иконки
 - [x] `widgets/header` (дропдауны, мобильное меню), `widgets/footer`
 - [x] Документация
-- [ ] **`shared/ui/modal`** — нужен Dev 2 для видео. Делаем первым! Закрытие по Esc / клику на фон, блок скролла `body`, `role="dialog"`
+- [x] **`shared/ui/modal`** — на нативном `<dialog>`: Esc, клик по фону, кнопка ×, блок скролла страницы
 - [ ] Поднять репозиторий на GitHub, защитить `main`, добавить ребят
 
 ### `widgets/hero` — «Work wonders»
 
-- [ ] Розовый фон (`tone="blush"`), сливается с шапкой
-- [ ] `h1` «Work wonders» (`size="xl"`), подзаголовок
-- [ ] Две кнопки: «Try Oneflow free» (`primary`), «Watch» (`secondary`)
-- [ ] Картинка справа; на мобилке — под текстом
+- [x] Фото на весь блок (`public/images/hero/hero.webp`), пропорции макета 1440 × 770, сверено с макетом попиксельно
+- [x] `h1` «Work wonders», подзаголовок, кнопки «Get Oneflow free» (`primary`) и «Take a tour» (`secondary` → скролл к `#smart-contracts`)
+- [x] < lg — текст сверху на градиенте, фото под ним
+- [x] Тексты и путь к фото — `config/content.js`
 
 ### `widgets/clients` — логотипы компаний
 
-- [ ] Тёмная полоса (`tone="dark"`, `spacing="sm"`), текст «Join these companies making business flow»
-- [ ] Ряд логотипов (данные в `config/clients.js`)
-- [ ] На мобилке — бегущая строка (CSS `@keyframes` в `@theme`) или горизонтальный скролл
+- [x] Тёмная полоса, заголовок «Join these companies making business flow»
+- [x] Логотипы — SVG в `public/images/clients/`, список — `config/clients.js`
+- [x] < lg — бесконечная бегущая строка, ≥ lg — статичный ряд; при «уменьшить движение» — обычный скролл
 
 ### В конце
 
@@ -73,9 +73,8 @@
 
 ### `features/play-video` + `widgets/press-play` — «Press play»
 
-- [ ] `features/play-video`: компонент `PlayVideoButton` — круглая кнопка с `PlayIcon`, по клику открывает `Modal` (из `shared/ui/modal`, его делает Lead) с YouTube-iframe
+- [ ] `features/play-video`: компонент `PlayVideoButton` — круглая кнопка с `PlayIcon`, по клику открывает `Modal` из `@/shared/ui/modal` (готов, пример использования — в JSDoc над компонентом) с YouTube-iframe
 - [ ] `widgets/press-play`: розовый фон, огромный заголовок «Press play» (`Heading size="display"`), картинка с рукой и кольцом, `PlayVideoButton` поверх
-- [ ] Пока модалки нет — свёрстай секцию, а кнопку подключи позже
 
 ### `widgets/platform` — «The complete platform for smart contracts»
 
@@ -130,12 +129,13 @@
 
 ## Порядок работы
 
-| Этап | Dev 1 · Lead              | Dev 2                       | Dev 3                                  |
-| ---- | ------------------------- | --------------------------- | -------------------------------------- |
-| 1    | `shared/ui/modal`, GitHub | `smart-contracts`           | `entities/testimonial`, `testimonials` |
-| 2    | `hero`                    | `press-play` + `play-video` | `integrations`                         |
-| 3    | `clients`                 | `platform`                  | `entities/article`, `blog`             |
-| 4    | ревью, адаптив, деплой    | `believe-eyes`              | `more-from-oneflow`                    |
+| Этап | Dev 1 · Lead                          | Dev 2                       | Dev 3                                  |
+| ---- | ------------------------------------- | --------------------------- | -------------------------------------- |
+| 0    | ✅ основа, `modal`, `hero`, `clients` | —                           | —                                      |
+| 1    | GitHub, ревью PR                      | `smart-contracts`           | `entities/testimonial`, `testimonials` |
+| 2    | ревью PR                              | `press-play` + `play-video` | `integrations`                         |
+| 3    | ревью PR                              | `platform`                  | `entities/article`, `blog`             |
+| 4    | адаптив, Lighthouse, деплой           | `believe-eyes`              | `more-from-oneflow`                    |
 
 ## Definition of Done — секция готова, если
 
