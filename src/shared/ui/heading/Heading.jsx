@@ -14,7 +14,7 @@ const sizes = {
 }
 
 /**
- * Заголовок. На странице ровно один h1 (в Hero), у секций — h2, у карточек — h3.
+ * Заголовок (шрифт Roboto — font-display). На странице ровно один h1 (в Hero), у секций — h2, у карточек — h3.
  *
  * @param {object} props
  * @param {'h1' | 'h2' | 'h3' | 'h4'} [props.as='h2'] семантика — отдельно от размера
@@ -22,7 +22,10 @@ const sizes = {
  * @param {string} [props.className]
  *
  * @example <Heading as="h2" size="lg">Seamless integrations</Heading>
+ *
+ * Свой размер через className перебивайте на КАЖДОМ брейкпоинте:
+ * className="text-xl sm:text-[25px] lg:text-[25px]" — иначе останется lg:text-5xl из size.
  */
 export function Heading({ as: Tag = 'h2', size = 'lg', className, children }) {
-  return <Tag className={cn('font-medium tracking-tight', sizes[size], className)}>{children}</Tag>
+  return <Tag className={cn('font-display font-normal', sizes[size], className)}>{children}</Tag>
 }

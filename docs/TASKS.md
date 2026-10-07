@@ -7,7 +7,7 @@
 | —   | Шапка                                       | `widgets/header`            | Dev 1 ✅ |
 | 1   | Work wonders                                | `widgets/hero`              | Dev 1 ✅ |
 | 2   | Join these companies making business flow   | `widgets/clients`           | Dev 1 ✅ |
-| 3   | Turn signatures into smart contracts + табы | `widgets/smart-contracts`   | Dev 2    |
+| 3   | Turn signatures into smart contracts + табы | `widgets/smart-contracts`   | Dev 1 ✅ |
 | 4   | Press play                                  | `widgets/press-play`        | Dev 2    |
 | 5   | The complete platform for smart contracts   | `widgets/platform`          | Dev 2    |
 | 6   | Believe your eyes                           | `widgets/believe-eyes`      | Dev 2    |
@@ -22,7 +22,7 @@
 
 ---
 
-## Dev 1 · Lead — фундамент, Hero, Clients
+## Dev 1 · Lead — фундамент, Hero, Clients, Smart contracts
 
 Зона ответственности: архитектура, `shared/`, `app/`, `pages/`, код-ревью.
 
@@ -47,8 +47,18 @@
 ### `widgets/clients` — логотипы компаний
 
 - [x] Тёмная полоса, заголовок «Join these companies making business flow»
-- [x] Логотипы — SVG в `public/images/clients/`, список — `config/clients.js`
-- [x] < lg — бесконечная бегущая строка, ≥ lg — статичный ряд; при «уменьшить движение» — обычный скролл
+- [x] Логотипы — векторные SVG-компоненты (`ui/ClientLogos.jsx`), список — `config/clients.js`
+- [x] Бесконечная лента на всех ширинах: пауза при наведении, подсветка логотипа; при «уменьшить движение» — статичный ряд
+
+### `widgets/smart-contracts` — «Turn signatures into smart contracts» + табы
+
+- [x] Верх (`ui/SmartContractsIntro.jsx`): заголовок с зачёркнутым «e-», текст, кнопка; две колонки, ничего не наезжает
+- [x] Интерактивная иллюстрация на SVG/HTML (`ui/collage/`): появление по очереди при скролле, «печатающиеся» строки, рисующиеся галочки, диаграмма до 87%, параллакс за мышью, выбор способа подписи кликом
+- [x] Голубая панель с табами (`ui/ProductTabs.jsx`): **Create, Collaborate, Sign, Manage, Analyze, Integrate**
+- [x] Доступность: `role="tablist"` / `tab` / `tabpanel`, `aria-selected`, стрелки ← →, Home, End
+- [x] Данные — `config/content.js`, `config/tabs.js`; иконки табов — SVG в `ui/TabIcons.jsx`
+- [x] < lg — иллюстрация под текстом, табы скроллятся горизонтально
+- [ ] Тексты и картинки табов кроме Collaborate — временные, в макете есть только Collaborate (TODO в `config/tabs.js`)
 
 ### В конце
 
@@ -60,16 +70,8 @@
 
 ## Dev 2 — интерактив и визуальные секции
 
-Прокачиваешь: состояние в React, доступные табы, модалки, сложную вёрстку с декором.
-
-### `widgets/smart-contracts` — «Turn signatures into smart contracts»
-
-- [ ] Верх: заголовок, текст, кнопка «Take our product tour», коллаж-картинка справа
-- [ ] Голубая панель (`bg-sky-100`, скругление) с табами: **Create, Collaborate, Sign, Manage, Analyze, Integrate**
-- [ ] Клик по табу меняет контент: заголовок, текст, список из 3 пунктов, кнопка «Learn more» (`outline`), картинка
-- [ ] Данные табов — `config/tabs.js` (массив объектов), состояние активного таба — `useState` в виджете
-- [ ] Доступность: `role="tablist"` / `role="tab"` / `role="tabpanel"`, `aria-selected`, переключение стрелками ← →
-- [ ] На мобилке табы скроллятся горизонтально
+Прокачиваешь: модалки, видео, сложную вёрстку с декором.
+Пример интерактивного виджета со состоянием и доступными табами — `widgets/smart-contracts` (сделал Lead), посмотри перед стартом.
 
 ### `features/play-video` + `widgets/press-play` — «Press play»
 
@@ -129,13 +131,13 @@
 
 ## Порядок работы
 
-| Этап | Dev 1 · Lead                          | Dev 2                       | Dev 3                                  |
-| ---- | ------------------------------------- | --------------------------- | -------------------------------------- |
-| 0    | ✅ основа, `modal`, `hero`, `clients` | —                           | —                                      |
-| 1    | GitHub, ревью PR                      | `smart-contracts`           | `entities/testimonial`, `testimonials` |
-| 2    | ревью PR                              | `press-play` + `play-video` | `integrations`                         |
-| 3    | ревью PR                              | `platform`                  | `entities/article`, `blog`             |
-| 4    | адаптив, Lighthouse, деплой           | `believe-eyes`              | `more-from-oneflow`                    |
+| Этап | Dev 1 · Lead                                             | Dev 2                       | Dev 3                                  |
+| ---- | -------------------------------------------------------- | --------------------------- | -------------------------------------- |
+| 0    | ✅ основа, `modal`, `hero`, `clients`, `smart-contracts` | —                           | —                                      |
+| 1    | GitHub, ревью PR                                         | `press-play` + `play-video` | `entities/testimonial`, `testimonials` |
+| 2    | ревью PR                                                 | `platform`                  | `integrations`                         |
+| 3    | ревью PR                                                 | `believe-eyes`              | `entities/article`, `blog`             |
+| 4    | адаптив, Lighthouse, деплой                              | помощь Dev 3 / полировка    | `more-from-oneflow`                    |
 
 ## Definition of Done — секция готова, если
 

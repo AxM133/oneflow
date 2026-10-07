@@ -107,6 +107,7 @@ import { ArticleCard } from '../../entities/article/ui/ArticleCard'
 | `Logo`               | `@/shared/ui/logo`                | `<Logo tone="light" />`                                                                          |
 | `Modal`              | `@/shared/ui/modal`               | `<Modal open={isOpen} onClose={close} label="Video">…</Modal>`                                   |
 | Иконки               | `@/shared/ui/icons`               | `<ArrowRightIcon className="size-4" />` (Arrow, Check, ChevronDown, Close, Document, Menu, Play) |
+| `Reveal`             | `@/shared/ui/reveal`              | `<Reveal delay={150}>…</Reveal>` — плавно проявляет блок при скролле                             |
 | `SectionPlaceholder` | `@/shared/ui/section-placeholder` | временная заглушка — удалить, когда секция свёрстана                                             |
 
 **Варианты кнопок** (`variant`): `primary` (жёлтая CTA), `secondary` (тёмная), `outline`,
@@ -117,6 +118,11 @@ import { ArticleCard } from '../../entities/article/ui/ArticleCard'
 
 **Размеры заголовков** (`size`): `display` («Press play»), `xl` (hero), `lg` (секции), `md`, `sm` (карточки).
 Семантика (`as="h1"…"h4"`) задаётся отдельно от размера. На странице ровно один `h1` — в Hero.
+Шрифт заголовков — Roboto (`font-display`), остальной текст — Work Sans (`font-sans`), как в макете.
+
+> ⚠️ **Ловушка:** размеры в `Heading` заданы по брейкпоинтам (`text-3xl sm:text-4xl lg:text-5xl`).
+> Если задаёте свой размер через `className`, перебейте **каждый** брейкпоинт, иначе на десктопе останется старый:
+> `className="text-xl sm:text-[25px] lg:text-[25px]"` ✅ &nbsp; `className="text-[25px]"` ❌ (на lg будет 48px)
 
 ### Как изменить или добавить компонент в `shared/ui`
 
@@ -138,8 +144,11 @@ import { ArticleCard } from '../../entities/article/ui/ArticleCard'
 - Mobile-first: базовые классы — для телефона, дальше `sm:` `md:` `lg:`.
   Проверяем на ширинах **375 / 768 / 1440**.
 - Порядок классов выравнивает prettier автоматически (`npm run format`).
-- Готовые анимации из `@theme`: `animate-fade-in`, `animate-float` (парение), `animate-marquee` (бегущая строка).
+- Готовые анимации из `@theme`: `animate-fade-in`, `animate-float` (парение), `animate-marquee` (бегущая строка),
+  `animate-twinkle` (мерцание), `animate-spin-slow`, `animate-blink` (курсор).
   Оборачивайте декоративные в `motion-safe:` — у кого включено «уменьшить движение», они не будут дёргаться.
+- Анимация «при появлении на экране»: обёртка `Reveal` или хук `useInView` из `@/shared/lib/use-in-view`.
+  Для анимаций на JS проверяйте `prefersReducedMotion()` из `@/shared/lib/motion`.
 
 ## 6. Нейминг
 
@@ -202,10 +211,10 @@ export function IntegrationsSection() {
 
 Образцы готовых слайсов — смотрите, как там всё устроено, и делайте так же:
 
-| Слайс                                       | Что в нём полезно подсмотреть                                      |
-| ------------------------------------------- | ------------------------------------------------------------------ |
-| [`widgets/hero`](../src/widgets/hero)       | тексты в `config/`, фото на фоне + отдельная раскладка для мобилки |
-| [`widgets/clients`](../src/widgets/clients) | список из `config/`, картинки из `public/images/`, бегущая строка  |
-| [`widgets/header`](../src/widgets/header)   | состояние (`useState`), разбивка на `DesktopNav` / `MobileNav`     |
-| [`widgets/footer`](../src/widgets/footer)   | несколько списков ссылок из `config/`                              |
-| [`shared/ui/modal`](../src/shared/ui/modal) | как подключить модалку — пример в JSDoc над компонентом            |
+| Слайс                                       | Что в нём полезно подсмотреть                                       |
+| ------------------------------------------- | ------------------------------------------------------------------- |
+| [`widgets/hero`](../src/widgets/hero)       | тексты в `config/`, фото на фоне + отдельная раскладка для мобилки  |
+| [`widgets/clients`](../src/widgets/clients) | векторные логотипы-компоненты, бесконечная лента с паузой при hover |
+| [`widgets/header`](../src/widgets/header)   | состояние (`useState`), разбивка на `DesktopNav` / `MobileNav`      |
+| [`widgets/footer`](../src/widgets/footer)   | несколько списков ссылок из `config/`                               |
+| [`shared/ui/modal`](../src/shared/ui/modal) | как подключить модалку — пример в JSDoc над компонентом             |

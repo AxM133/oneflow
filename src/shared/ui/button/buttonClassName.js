@@ -19,7 +19,8 @@ const variants = {
 
 const sizes = {
   sm: 'h-8 px-3 text-xs',
-  md: 'h-10 px-5 text-sm',
+  // "Log in", "Learn more": 40px высота, 16px поля
+  md: 'h-10 px-4 text-sm',
   // "Get Oneflow free" в Hero: 50px высота, 22px поля
   lg: 'h-12.5 px-5.5 text-base',
 }
