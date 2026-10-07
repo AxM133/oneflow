@@ -13,12 +13,12 @@ import { TestimonialsSection } from '@/widgets/testimonials'
 
 /**
  * Страница только СОБИРАЕТ виджеты в нужном порядке — никакой вёрстки здесь.
- * Порядок секций совпадает с макетом сверху вниз.
  */
 export function HomePage() {
   return (
     <>
       <Header />
+
       <main>
         <HeroSection />
         <ClientsSection />

@@ -4,7 +4,7 @@ import { ButtonLink } from '@/shared/ui/button'
 /** Выпадающая панель меню для экранов < lg. */
 export function MobileNav({ id, items, onNavigate }) {
   return (
-    <div id={id} className="animate-fade-in border-t border-ink-900/10 bg-blush-50 lg:hidden">
+    <div id={id} className="animate-fade-in border-t border-ink-900/10 bg-white lg:hidden">
       <nav aria-label="Mobile" className="mx-auto max-w-content px-4 py-4 sm:px-6">
         <ul className="flex flex-col">
           {items.map((item) => (

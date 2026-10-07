@@ -4,7 +4,7 @@ export const SITE_LINKS = {
   demo: '#demo',
   login: '#login',
   tryFree: '#try-free',
-  productTour: '#product-tour',
+  productTour: '#smart-contracts',
 }
 
 export const COMPANY = {

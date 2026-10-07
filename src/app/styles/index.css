@@ -8,20 +8,20 @@
  * Не хардкодьте hex-цвета в компонентах — добавляйте токен сюда.
  */
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
 
   /* Основной тёмно-бирюзовый (тёмные секции, текст, футер) */
-  --color-ink-950: #062a30;
-  --color-ink-900: #0b3c44;
-  --color-ink-800: #12505a;
-  --color-ink-700: #1d6670;
-  --color-ink-500: #4f7f86;
-  --color-ink-300: #9bb7bb;
+  --color-ink-950: #002c3a;
+  --color-ink-900: #003a4c;
+  --color-ink-800: #0d4b5e;
+  --color-ink-700: #1a5f73;
+  --color-ink-500: #4d7d8c;
+  --color-ink-300: #99b5bf;
 
   /* Жёлтый акцент — CTA-кнопки */
-  --color-accent-400: #ffd36b;
-  --color-accent-500: #ffc64a;
-  --color-accent-600: #f2b52a;
+  --color-accent-400: #ffdb85;
+  --color-accent-500: #ffd064;
+  --color-accent-600: #f5c04a;
 
   /* Розовые фоны (hero, "Press play", "Complete platform") */
   --color-blush-50: #fbf0f4;
@@ -29,15 +29,21 @@
   --color-blush-200: #efc9d8;
   --color-blush-300: #e4aec4;
 
+  /* Цвета верхнего края фото в Hero — фон над картинкой на мобилке */
+  --color-hero-start: #cd9eaf;
+  --color-hero-end: #f1c1bf;
+
   /* Голубой фон (панель с табами) */
   --color-sky-100: #dde9f3;
   --color-sky-200: #c9dcec;
 
-  /* Ширина контента */
-  --container-content: 1200px;
+  /* Ширина контента: 1152px сетка макета + 2 × 32px отступы Container (lg:px-8) */
+  --container-content: 1216px;
 
-  /* Анимации */
+  /* Анимации: animate-fade-in, animate-float, animate-marquee */
   --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
 
   @keyframes fade-in {
     from {
@@ -49,11 +55,39 @@
       transform: translateY(0);
     }
   }
+
+  /* Плавное "парение" декоративных элементов */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Бегущая строка: контент дублируется дважды и сдвигается на половину */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* чтобы липкая шапка (h-20) не перекрывала секцию при переходе по якорю */
+    scroll-padding-top: --spacing(20);
+  }
+
+  /* Пока открыта модалка (<dialog>), страница под ней не скроллится */
+  html:has(dialog[open]) {
+    overflow: hidden;
   }
 
   body {

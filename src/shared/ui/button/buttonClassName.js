@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib/cn'
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-md font-semibold whitespace-nowrap ' +
+  'inline-flex items-center justify-center gap-2 rounded-sm font-normal whitespace-nowrap ' +
   'transition-colors duration-200 select-none disabled:pointer-events-none disabled:opacity-50'
 
 const variants = {
@@ -20,7 +20,8 @@ const variants = {
 const sizes = {
   sm: 'h-8 px-3 text-xs',
   md: 'h-10 px-5 text-sm',
-  lg: 'h-12 px-7 text-base',
+  // "Get Oneflow free" в Hero: 50px высота, 22px поля
+  lg: 'h-12.5 px-5.5 text-base',
 }
 
 /**

@@ -95,18 +95,19 @@ import { ArticleCard } from '../../entities/article/ui/ArticleCard'
 Пропсы каждого компонента описаны в JSDoc-комментарии над ним — VS Code показывает их
 при наведении и подсказывает варианты (`variant="…"`) при вводе. Добавляете компонент — пишите такой же комментарий.
 
-| Компонент            | Импорт                            | Пример                                                             |
-| -------------------- | --------------------------------- | ------------------------------------------------------------------ |
-| `Button`             | `@/shared/ui/button`              | `<Button variant="secondary" onClick={open}>Watch</Button>`        |
-| `ButtonLink`         | `@/shared/ui/button`              | `<ButtonLink href="#demo" size="lg">Try Oneflow free</ButtonLink>` |
-| `Section`            | `@/shared/ui/section`             | `<Section id="blog" tone="white" spacing="lg">…</Section>`         |
-| `Container`          | `@/shared/ui/container`           | `<Container className="flex">…</Container>`                        |
-| `Heading`            | `@/shared/ui/heading`             | `<Heading as="h2" size="lg">Seamless integrations</Heading>`       |
-| `Text`               | `@/shared/ui/text`                | `<Text size="lg" muted>Be more effective…</Text>`                  |
-| `Badge`              | `@/shared/ui/badge`               | `<Badge tone="pink">Guide</Badge>`                                 |
-| `Logo`               | `@/shared/ui/logo`                | `<Logo tone="light" />`                                            |
-| Иконки               | `@/shared/ui/icons`               | `<ArrowRightIcon className="size-4" />`                            |
-| `SectionPlaceholder` | `@/shared/ui/section-placeholder` | временная заглушка — удалить, когда секция свёрстана               |
+| Компонент            | Импорт                            | Пример                                                                                           |
+| -------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `Button`             | `@/shared/ui/button`              | `<Button variant="secondary" onClick={open}>Watch</Button>`                                      |
+| `ButtonLink`         | `@/shared/ui/button`              | `<ButtonLink href="#demo" size="lg">Try Oneflow free</ButtonLink>`                               |
+| `Section`            | `@/shared/ui/section`             | `<Section id="blog" tone="white" spacing="lg">…</Section>`                                       |
+| `Container`          | `@/shared/ui/container`           | `<Container className="flex">…</Container>`                                                      |
+| `Heading`            | `@/shared/ui/heading`             | `<Heading as="h2" size="lg">Seamless integrations</Heading>`                                     |
+| `Text`               | `@/shared/ui/text`                | `<Text size="lg" muted>Be more effective…</Text>`                                                |
+| `Badge`              | `@/shared/ui/badge`               | `<Badge tone="pink">Guide</Badge>`                                                               |
+| `Logo`               | `@/shared/ui/logo`                | `<Logo tone="light" />`                                                                          |
+| `Modal`              | `@/shared/ui/modal`               | `<Modal open={isOpen} onClose={close} label="Video">…</Modal>`                                   |
+| Иконки               | `@/shared/ui/icons`               | `<ArrowRightIcon className="size-4" />` (Arrow, Check, ChevronDown, Close, Document, Menu, Play) |
+| `SectionPlaceholder` | `@/shared/ui/section-placeholder` | временная заглушка — удалить, когда секция свёрстана                                             |
 
 **Варианты кнопок** (`variant`): `primary` (жёлтая CTA), `secondary` (тёмная), `outline`,
 `outline-light` (на тёмном фоне), `ghost` (текстовая). **Размеры** (`size`): `sm`, `md`, `lg`.
@@ -137,6 +138,8 @@ import { ArticleCard } from '../../entities/article/ui/ArticleCard'
 - Mobile-first: базовые классы — для телефона, дальше `sm:` `md:` `lg:`.
   Проверяем на ширинах **375 / 768 / 1440**.
 - Порядок классов выравнивает prettier автоматически (`npm run format`).
+- Готовые анимации из `@theme`: `animate-fade-in`, `animate-float` (парение), `animate-marquee` (бегущая строка).
+  Оборачивайте декоративные в `motion-safe:` — у кого включено «уменьшить движение», они не будут дёргаться.
 
 ## 6. Нейминг
 
@@ -197,4 +200,12 @@ export function IntegrationsSection() {
 
 **3. `index.js` и `HomePage` трогать не нужно** — они уже подключены.
 
-Образцы готовых слайсов: [`widgets/header`](../src/widgets/header) и [`widgets/footer`](../src/widgets/footer).
+Образцы готовых слайсов — смотрите, как там всё устроено, и делайте так же:
+
+| Слайс                                       | Что в нём полезно подсмотреть                                      |
+| ------------------------------------------- | ------------------------------------------------------------------ |
+| [`widgets/hero`](../src/widgets/hero)       | тексты в `config/`, фото на фоне + отдельная раскладка для мобилки |
+| [`widgets/clients`](../src/widgets/clients) | список из `config/`, картинки из `public/images/`, бегущая строка  |
+| [`widgets/header`](../src/widgets/header)   | состояние (`useState`), разбивка на `DesktopNav` / `MobileNav`     |
+| [`widgets/footer`](../src/widgets/footer)   | несколько списков ссылок из `config/`                              |
+| [`shared/ui/modal`](../src/shared/ui/modal) | как подключить модалку — пример в JSDoc над компонентом            |

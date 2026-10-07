@@ -14,7 +14,7 @@ import { MobileNav } from './MobileNav'
 const MOBILE_NAV_ID = 'mobile-nav'
 
 /**
- * Шапка сайта: логотип, навигация, CTA. Липкая, фон совпадает с Hero.
+ * Шапка сайта: логотип, навигация, CTA. Липкая, белая, высота 80px — как в макете.
  *
  * @param {object} props
  * @param {typeof NAV_ITEMS} [props.items] пункты меню (по умолчанию из config/navigation)
@@ -25,27 +25,17 @@ export function Header({ items = NAV_ITEMS, className }) {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 border-b border-ink-900/5 bg-blush-100/85 backdrop-blur-md',
-        className,
-      )}
-    >
-      <Container className="flex h-16 items-center justify-between gap-6">
+    <header className={cn('sticky top-0 z-50 bg-white', className)}>
+      <Container className="flex h-20 items-center justify-between gap-6">
         <Logo />
 
         <DesktopNav items={items} />
 
         <div className="flex items-center gap-2">
-          <ButtonLink href={SITE_LINKS.demo} size="sm" className="hidden sm:inline-flex">
+          <ButtonLink href={SITE_LINKS.demo} className="hidden sm:inline-flex">
             Get a demo
           </ButtonLink>
-          <ButtonLink
-            href={SITE_LINKS.login}
-            size="sm"
-            variant="outline"
-            className="hidden sm:inline-flex"
-          >
+          <ButtonLink href={SITE_LINKS.login} variant="outline" className="hidden sm:inline-flex">
             Log in
           </ButtonLink>
 

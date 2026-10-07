@@ -1,1 +1,9 @@
-export { ArrowRightIcon, ChevronDownIcon, CloseIcon, MenuIcon, PlayIcon } from './icons'
+export {
+  ArrowRightIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  CloseIcon,
+  DocumentIcon,
+  MenuIcon,
+  PlayIcon,
+} from './icons'
