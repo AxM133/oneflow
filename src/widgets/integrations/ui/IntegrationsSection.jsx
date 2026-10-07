@@ -1,40 +1,60 @@
-import { integrations } from '../../../config/integrations'
+import { cn } from '@/shared/lib/cn'
+import { ButtonLink } from '@/shared/ui/button'
+import { Heading } from '@/shared/ui/heading'
+import { Reveal } from '@/shared/ui/reveal'
+import { Section } from '@/shared/ui/section'
+import { Text } from '@/shared/ui/text'
 
+import { INTEGRATION_COLUMNS, INTEGRATIONS_CONTENT } from '../config/integrations'
+
+/**
+ * "Seamless integrations": текст слева, логотипы справа в три колонки зигзагом.
+ * Боковые колонки опущены относительно средней; логотипы плавно парят со сдвигом фазы.
+ */
 export function IntegrationsSection() {
-  return (
-    <section id="integrations" className="mx-auto w-full max-w-7xl px-4 py-16">
-      <div className="grid items-center gap-10 md:grid-cols-2">
-        <div>
-          <h2 className="text-4xl font-semibold text-slate-900 md:text-5xl">
-            Seamless integrations
-          </h2>
-          <p className="mt-4 max-w-md text-slate-700">
-            Integrate your favorite tools with your contract workflow and work
-            wonders.
-          </p>
-          <a
-            href="#"
-            className="mt-6 inline-block rounded bg-[#f8d94b] px-6 py-3 text-sm font-medium text-slate-900 transition hover:brightness-95"
-          >
-            See all integrations
-          </a>
-        </div>
+  const { title, text, action } = INTEGRATIONS_CONTENT
 
-        <div className="grid grid-cols-3 gap-6">
-          {integrations.map((item) => (
-            <div
-              key={item.id}
-              className="flex aspect-square items-center justify-center rounded-xl bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-md"
-            >
-              <img
-                src={item.logo}
-                alt={item.name}
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  return (
+    <Section
+      id="integrations"
+      spacing="lg"
+      containerClassName="grid items-center gap-16 lg:grid-cols-2"
+    >
+      <Reveal>
+        <Heading className="lg:text-6xl">{title}</Heading>
+        <Text size="lg" className="mt-6 max-w-sm tracking-[0.02em]">
+          {text}
+        </Text>
+        <ButtonLink href={action.href} className="mt-6">
+          {action.label}
+        </ButtonLink>
+      </Reveal>
+
+      <Reveal delay={150} className="mx-auto grid grid-cols-3 gap-x-12 sm:gap-x-20 lg:gap-x-24">
+        {INTEGRATION_COLUMNS.map((column, columnIndex) => (
+          <ul
+            key={columnIndex}
+            className={cn('flex flex-col gap-12 sm:gap-20', columnIndex !== 1 && 'mt-12 sm:mt-20')}
+          >
+            {column.map((integration, index) => (
+              <li
+                key={integration.logo}
+                style={{ animationDelay: `${-(columnIndex * 2 + index * 1.3)}s` }}
+                className="motion-safe:animate-float"
+              >
+                <img
+                  src={integration.logo}
+                  alt={integration.name}
+                  width={72}
+                  height={72}
+                  loading="lazy"
+                  className="size-14 object-contain transition-transform duration-300 hover:scale-110 sm:size-18"
+                />
+              </li>
+            ))}
+          </ul>
+        ))}
+      </Reveal>
+    </Section>
   )
 }

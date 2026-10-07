@@ -1,3 +1,7 @@
+/**
+ * Отзывы клиентов (моки вместо API).
+ * Формат: { id, quote, author, role, company, avatar, href }
+ */
 export const testimonials = [
   {
     id: 1,
@@ -6,7 +10,7 @@ export const testimonials = [
     author: 'Mattias Johansson',
     role: 'Key Account Manager',
     company: 'Sweco',
-    avatar: '/images/testimonials/avatar-1.png',
+    avatar: '/images/testimonials/avatar-1.webp',
     href: '#',
   },
   {
@@ -16,7 +20,7 @@ export const testimonials = [
     author: 'Elin Skoglund',
     role: 'HR Business Partner',
     company: 'Hedin Bil',
-    avatar: '/images/testimonials/avatar-2.png',
+    avatar: '/images/testimonials/avatar-2.webp',
     href: '#',
   },
   {
@@ -26,7 +30,7 @@ export const testimonials = [
     author: 'Tor Myhrman',
     role: 'Head of Indirect Sourcing',
     company: 'Systembolaget',
-    avatar: '/images/testimonials/avatar-3.png',
+    avatar: '/images/testimonials/avatar-3.webp',
     href: '#',
   },
   {
@@ -36,7 +40,7 @@ export const testimonials = [
     author: 'Jonas Andersson',
     role: 'Head of Sales',
     company: 'Kungsleden',
-    avatar: '/images/testimonials/avatar-4.png',
+    avatar: '/images/testimonials/avatar-4.webp',
     href: '#',
   },
 ]

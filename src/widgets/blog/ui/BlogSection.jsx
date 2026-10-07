@@ -1,33 +1,33 @@
-import { ArticleCard, articles } from '../../../entities/article'
+import { ArticleCard, articles } from '@/entities/article'
+import { ButtonLink } from '@/shared/ui/button'
+import { Heading } from '@/shared/ui/heading'
+import { Reveal } from '@/shared/ui/reveal'
+import { Section } from '@/shared/ui/section'
 
+/** "And for our next trick…": большая статья на всю ширину + три карточки под ней. */
 export function BlogSection() {
-  const featured = articles.find((a) => a.variant === 'featured')
-  const rest = articles.filter((a) => a.variant !== 'featured').slice(0, 3)
+  const [featured, ...rest] = articles
 
   return (
-    <section id="blog" className="mx-auto w-full max-w-7xl px-4 py-16">
-      <div className="mb-8 flex items-center justify-between gap-4">
-        <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
-          And for our next trick...
-        </h2>
-        <a
-          href="#"
-          className="shrink-0 rounded bg-[#f8d94b] px-5 py-2.5 text-sm font-medium text-slate-900 transition hover:brightness-95"
-        >
-          See our blog
-        </a>
-      </div>
+    <Section id="blog" spacing="lg">
+      <Reveal className="flex flex-wrap items-center justify-between gap-6">
+        <Heading className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+          And for our next trick…
+        </Heading>
+        <ButtonLink href="#blog">Visit our blog</ButtonLink>
+      </Reveal>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {featured && (
-          <div className="md:col-span-3">
-            <ArticleCard {...featured} />
-          </div>
-        )}
-        {rest.map((article) => (
-          <ArticleCard key={article.id} {...article} />
+      <Reveal delay={100} className="mt-10 lg:mt-12">
+        <ArticleCard article={featured} />
+      </Reveal>
+
+      <ul className="mt-6 grid gap-6 md:grid-cols-3">
+        {rest.map((article, index) => (
+          <Reveal as="li" key={article.id} delay={150 + index * 100}>
+            <ArticleCard article={article} />
+          </Reveal>
         ))}
-      </div>
-    </section>
+      </ul>
+    </Section>
   )
 }

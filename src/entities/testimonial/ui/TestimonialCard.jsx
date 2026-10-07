@@ -1,30 +1,49 @@
-export function TestimonialCard({ quote, author, role, company, avatar, href }) {
+import { cn } from '@/shared/lib/cn'
+
+/**
+ * Карточка отзыва: цитата, ссылка на историю, автор с аватаром.
+ * Ширину задаёт тот, кто использует карточку (через className) — например, слайдер.
+ *
+ * @param {object} props
+ * @param {{ quote: string, author: string, role: string, company: string, avatar: string, href: string }} props.testimonial
+ * @param {string} [props.className]
+ */
+export function TestimonialCard({ testimonial, className }) {
+  const { quote, author, role, company, avatar, href } = testimonial
+
   return (
     <article
-      data-card
-      className="flex w-[85%] shrink-0 snap-start flex-col justify-between rounded-2xl bg-white p-6 shadow-sm sm:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]"
+      className={cn(
+        'flex flex-col justify-between rounded-sm border border-ink-900/15 bg-white p-8 transition-shadow duration-300 hover:shadow-xl hover:shadow-ink-900/10',
+        className,
+      )}
     >
       <div>
-        <p className="text-base leading-relaxed text-slate-800">“{quote}”</p>
+        <blockquote className="text-base leading-6 tracking-[0.02em] text-ink-900">
+          “{quote}”
+        </blockquote>
         <a
           href={href}
-          className="mt-4 inline-block text-sm font-medium text-slate-900 underline underline-offset-4 hover:opacity-70"
+          className="mt-4 inline-block text-sm text-magenta-500 underline-offset-4 hover:underline"
         >
-          Read the story
+          Read full story
         </a>
       </div>
 
-      <div className="mt-8 flex items-center gap-3">
+      <div className="mt-10 flex items-center gap-4">
         <img
           src={avatar}
-          alt={author}
-          className="h-12 w-12 rounded-full object-cover"
+          alt=""
+          width={48}
+          height={48}
+          loading="lazy"
+          className="size-12 shrink-0 rounded-full object-cover"
         />
-        <div className="text-sm leading-tight">
-          <p className="font-semibold text-slate-900">{author}</p>
-          <p className="text-slate-600">{role}</p>
-          <p className="text-slate-600">{company}</p>
-        </div>
+        <p className="text-sm leading-5 text-ink-900">
+          <span className="block">{author}</span>
+          <span className="block">{role}</span>
+          <span className="block">{company}</span>
+        </p>
       </div>
     </article>
   )

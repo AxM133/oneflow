@@ -1,53 +1,46 @@
-const items = [
-  {
-    id: 1,
-    image: '/images/more-from-oneflow/more-1.jpg',
-    caption: 'One platform. All departments',
-    title: 'Create, sign and manage any type of agreement you can think of',
-    href: '#',
-  },
-  {
-    id: 2,
-    image: '/images/more-from-oneflow/more-2.jpg',
-    caption: 'Why Oneflow',
-    title: 'Six reasons why teams around the world love the magic of flow',
-    href: '#',
-  },
-]
+import { ButtonLink } from '@/shared/ui/button'
+import { Heading } from '@/shared/ui/heading'
+import { Reveal } from '@/shared/ui/reveal'
+import { Section } from '@/shared/ui/section'
+import { Text } from '@/shared/ui/text'
 
+import { MORE_ITEMS, MORE_TITLE } from '../config/items'
+
+/** "More from Oneflow": две промо-карточки с картинкой, подписью и кнопкой. */
 export function MoreFromOneflowSection() {
   return (
-    <section
-      id="more-from-oneflow"
-      className="mx-auto w-full max-w-7xl px-4 py-16"
-    >
-      <h2 className="mb-8 text-3xl font-semibold text-slate-900 md:text-4xl">
-        More from Oneflow
-      </h2>
+    <Section id="more-from-oneflow" spacing="lg">
+      <Reveal>
+        <Heading className="text-3xl font-bold sm:text-4xl lg:text-5xl">{MORE_TITLE}</Heading>
+      </Reveal>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {items.map((item) => (
-          <article key={item.id} className="group text-center">
-            <div className="overflow-hidden rounded-xl">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-            </div>
-            <p className="mt-4 text-xs text-slate-500">{item.caption}</p>
-            <h3 className="mx-auto mt-2 max-w-sm text-lg font-medium text-slate-900">
-              {item.title}
-            </h3>
-            <a
-              href={item.href}
-              className="mt-4 inline-block rounded bg-[#f8d94b] px-5 py-2.5 text-sm font-medium text-slate-900 transition hover:brightness-95"
-            >
-              Find out more
-            </a>
-          </article>
+      <ul className="mt-10 grid gap-12 md:grid-cols-2 md:gap-8 lg:mt-12">
+        {MORE_ITEMS.map((item, index) => (
+          <Reveal as="li" key={item.id} delay={index * 120}>
+            <article className="group flex flex-col items-center text-center">
+              <div className="w-full overflow-hidden rounded-sm">
+                <img
+                  src={item.image}
+                  alt=""
+                  width={1440}
+                  height={810}
+                  loading="lazy"
+                  className="aspect-[560/314] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <Text size="sm" className="mt-4">
+                {item.caption}
+              </Text>
+              <Heading as="h3" className="mt-3 max-w-md text-2xl sm:text-3xl lg:text-3xl">
+                {item.title}
+              </Heading>
+              <ButtonLink href={item.href} className="mt-6">
+                Find out more
+              </ButtonLink>
+            </article>
+          </Reveal>
         ))}
-      </div>
-    </section>
+      </ul>
+    </Section>
   )
 }
