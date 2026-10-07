@@ -9,10 +9,12 @@
  */
 @theme {
   --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  /* Заголовки: "Work wonders", "Turn signatures…", "Collaborate" */
+  --font-display: 'Roboto', ui-sans-serif, system-ui, sans-serif;
 
   /* Основной тёмно-бирюзовый (тёмные секции, текст, футер) */
   --color-ink-950: #002c3a;
-  --color-ink-900: #003a4c;
+  --color-ink-900: #013a4c;
   --color-ink-800: #0d4b5e;
   --color-ink-700: #1a5f73;
   --color-ink-500: #4d7d8c;
@@ -25,7 +27,7 @@
 
   /* Розовые фоны (hero, "Press play", "Complete platform") */
   --color-blush-50: #fbf0f4;
-  --color-blush-100: #f6dfe8;
+  --color-blush-100: #f2dce4;
   --color-blush-200: #efc9d8;
   --color-blush-300: #e4aec4;
 
@@ -33,17 +35,28 @@
   --color-hero-start: #cd9eaf;
   --color-hero-end: #f1c1bf;
 
-  /* Голубой фон (панель с табами) */
-  --color-sky-100: #dde9f3;
-  --color-sky-200: #c9dcec;
+  /* Голубой фон (панель с табами) и разделитель на нём */
+  --color-sky-100: #d3e8f4;
+  --color-sky-200: #c4dcea;
+  --color-sky-300: #94b4c2;
+
+  /* Цвета иллюстраций (коллаж в "Turn e-signatures", диаграммы) */
+  --color-magenta-500: #b73d8b;
+  --color-coral-500: #d13d47;
+  --color-azure-500: #187bb7;
+  --color-mist-300: #c3cccf;
+  --color-steel-300: #99b0b7;
 
   /* Ширина контента: 1152px сетка макета + 2 × 32px отступы Container (lg:px-8) */
   --container-content: 1216px;
 
-  /* Анимации: animate-fade-in, animate-float, animate-marquee */
+  /* Анимации: animate-fade-in, animate-float, animate-marquee, animate-twinkle, animate-spin-slow, animate-blink */
   --animate-fade-in: fade-in 0.2s ease-out;
   --animate-float: float 6s ease-in-out infinite;
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-twinkle: twinkle 2.4s ease-in-out infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-blink: blink 1s steps(1) infinite;
 
   @keyframes fade-in {
     from {
@@ -64,6 +77,30 @@
     }
     50% {
       transform: translateY(-10px);
+    }
+  }
+
+  /* Мерцание звёздочек-искр */
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Мигающий курсор */
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
     }
   }
 

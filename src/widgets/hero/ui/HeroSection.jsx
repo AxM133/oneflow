@@ -29,7 +29,7 @@ export function HeroSection() {
       <Container className="relative z-10 pt-12 pb-10 sm:pt-16 sm:pb-12 lg:py-0 lg:pb-26">
         <Heading
           as="h1"
-          className="text-[2.75rem] leading-none font-normal tracking-[-0.055em] sm:text-6xl xl:text-[5rem]"
+          className="text-[2.75rem] leading-none tracking-[-0.005em] sm:text-6xl xl:translate-y-0.5 xl:text-[5rem]"
         >
           {title}
         </Heading>
